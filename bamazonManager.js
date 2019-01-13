@@ -5,7 +5,7 @@ var connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
     user: "root",
-    password: "Anai796882+",
+    password: "",
     database: "bamazon_DB"
 });
 
@@ -140,7 +140,9 @@ function addNewProduct() {
                     "Hogar",
                     "Muebles",
                     "Ropa",
-                    "Videojuegos"
+                    "Videojuegos",
+                    "Outdoors",
+                    "Books"
                 ]
             },
             {
@@ -152,6 +154,11 @@ function addNewProduct() {
                 name: "units",
                 type: "input",
                 message: "How many units are in stock?"
+            },
+            {
+                name: "sales",
+                type: "input",
+                message: "How much do you have in sales?"
             }
         ])
         .then(function (answers) {
@@ -162,7 +169,8 @@ function addNewProduct() {
                     product_name: answers.name,
                     department_name: answers.department,
                     price: answers.price,
-                    stock_quantity: answers.units
+                    stock_quantity: answers.units,
+                    product_sales: answers.sales
                 },
                 function (err, res) {
                     if (err) throw err;
